@@ -21,7 +21,7 @@ object SlickExtension extends ExtensionId[SlickExtensionImpl] with ExtensionIdPr
 class SlickExtensionImpl(system: ExtendedActorSystem) extends Extension {
 
   private val dbProvider: SlickDatabaseProvider = {
-    val fqcn = system.settings.config.getString("akka-persistence-jdbc.database-provider-fqcn")
+    val fqcn = system.settings.config.getString("akka.persistence.jdbc.database-provider-fqcn")
     val args = List(classOf[ActorSystem] -> system)
     system.dynamicAccess.createInstanceFor[SlickDatabaseProvider](fqcn, args) match {
       case Success(result) => result
@@ -54,7 +54,7 @@ trait SlickDatabaseProvider {
 
 class DefaultSlickDatabaseProvider(system: ActorSystem) extends SlickDatabaseProvider {
   val sharedDatabases: Map[String, LazySlickDatabase] = system.settings.config
-    .getObject("akka-persistence-jdbc.shared-databases")
+    .getObject("akka.persistence.jdbc.shared-databases")
     .asScala
     .flatMap {
       case (key, confObj: ConfigObject) =>
@@ -65,7 +65,7 @@ class DefaultSlickDatabaseProvider(system: ActorSystem) extends SlickDatabasePro
         } else Nil
       case (key, notAnObject) =>
         throw new RuntimeException(
-          s"""Expected "akka-persistence-jdbc.shared-databases.$key" to be a config ConfigObject, but got ${notAnObject
+          s"""Expected "akka.persistence.jdbc.shared-databases.$key" to be a config ConfigObject, but got ${notAnObject
             .valueType()} (${notAnObject.getClass})""")
     }
     .toMap
@@ -74,7 +74,7 @@ class DefaultSlickDatabaseProvider(system: ActorSystem) extends SlickDatabasePro
     sharedDatabases.getOrElse(
       sharedDbName,
       throw new RuntimeException(
-        s"No shared database is configured under akka-persistence-jdbc.shared-databases.$sharedDbName"))
+        s"No shared database is configured under akka.persistence.jdbc.shared-databases.$sharedDbName"))
 
   def database(config: Config): SlickDatabase = {
     config.asStringOption(ConfigKeys.useSharedDb) match {

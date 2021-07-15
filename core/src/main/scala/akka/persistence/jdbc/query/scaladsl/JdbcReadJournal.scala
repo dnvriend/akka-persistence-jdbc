@@ -288,7 +288,7 @@ class JdbcReadJournal(config: Config, configPath: String)(implicit val system: E
    * The offset is exclusive, i.e. the event corresponding to the given `offset` parameter is not
    * included in the stream.
    *
-   * For akka-persistence-jdbc the `offset` corresponds to the `ordering` column in the Journal table.
+   * For Akka Persistence JDBC the `offset` corresponds to the `ordering` column in the Journal table.
    * The `ordering` is a sequential id number that uniquely identifies the position of each event within
    * the event stream. The `Offset` type is `akka.persistence.query.Sequence` with the `ordering` as the
    * offset value.

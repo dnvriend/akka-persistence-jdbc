@@ -56,7 +56,7 @@ class AkkaPersistenceConfigTest extends AnyFlatSpec with Matchers {
       |      port = ${?POSTGRES_PORT}
       |      name = "docker"
       |
-      |      url = "jdbc:postgresql://"${akka-persistence-jdbc.slick.db.host}":"${akka-persistence-jdbc.slick.db.port}"/"${akka-persistence-jdbc.slick.db.name}
+      |      url = "jdbc:postgresql://"${akka.persistence.jdbc.slick.db.host}":"${akka.persistence.jdbc.slick.db.port}"/"${akka.persistence.jdbc.slick.db.name}
       |      user = "docker"
       |      password = "docker"
       |      driver = "org.postgresql.Driver$"
@@ -114,7 +114,7 @@ class AkkaPersistenceConfigTest extends AnyFlatSpec with Matchers {
       |      port = ${?POSTGRES_PORT}
       |      name = "docker"
       |
-      |      url = "jdbc:postgresql://"${akka-persistence-jdbc.slick.db.host}":"${akka-persistence-jdbc.slick.db.port}"/"${akka-persistence-jdbc.slick.db.name}
+      |      url = "jdbc:postgresql://"${akka.persistence.jdbc.slick.db.host}":"${akka.persistence.jdbc.slick.db.port}"/"${akka.persistence.jdbc.slick.db.name}
       |      user = "docker"
       |      password = "docker"
       |      driver = "org.postgresql.Driver"
@@ -183,7 +183,7 @@ class AkkaPersistenceConfigTest extends AnyFlatSpec with Matchers {
       |      port = ${?POSTGRES_PORT}
       |      name = "docker"
       |
-      |      url = "jdbc:postgresql://"${akka-persistence-jdbc.slick.db.host}":"${akka-persistence-jdbc.slick.db.port}"/"${akka-persistence-jdbc.slick.db.name}
+      |      url = "jdbc:postgresql://"${akka.persistence.jdbc.slick.db.host}":"${akka.persistence.jdbc.slick.db.port}"/"${akka.persistence.jdbc.slick.db.name}
       |      user = "docker"
       |      password = "docker"
       |      driver = "org.postgresql.Driver"

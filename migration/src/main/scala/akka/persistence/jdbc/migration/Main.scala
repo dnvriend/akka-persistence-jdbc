@@ -11,7 +11,7 @@ import org.flywaydb.core.api.Location
 
 object Main extends App {
 
-  val config = ConfigFactory.load().getConfig("akka-persistence-jdbc.migration")
+  val config = ConfigFactory.load().getConfig("akka.persistence.jdbc.migration")
 
   def run(config: Config): Unit = {
     val vendor = config.getString("database-vendor")

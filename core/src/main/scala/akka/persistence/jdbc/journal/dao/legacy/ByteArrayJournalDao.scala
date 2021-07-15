@@ -59,8 +59,8 @@ trait BaseByteArrayJournalDao
   // Therefore, we make sure we only log a warning for logical deletes once
   lazy val logWarnAboutLogicalDeletionDeprecation = {
     logger.warn(
-      "Logical deletion of events is deprecated and will be removed in akka-persistence-jdbc in a later version " +
-      "To disable it in this current version you must set the property 'akka-persistence-jdbc.logicalDeletion.enable' to false.")
+      "Logical deletion of events is deprecated and will be removed in akka.persistence.jdbc in a later version " +
+      "To disable it in this current version you must set the property 'akka.persistence.jdbc.logicalDeletion.enable' to false.")
   }
 
   def writeJournalRows(xs: Seq[JournalRow]): Future[Unit] = { // Write atomically without auto-commit

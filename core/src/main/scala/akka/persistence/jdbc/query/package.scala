@@ -15,7 +15,7 @@ package object query {
         case NoOffset              => 0L
         case _ =>
           throw new IllegalArgumentException(
-            "akka-persistence-jdbc does not support " + that.getClass.getName + " offsets")
+            "Akka Persistence JDBC does not support " + that.getClass.getName + " offsets")
       }
   }
 }
