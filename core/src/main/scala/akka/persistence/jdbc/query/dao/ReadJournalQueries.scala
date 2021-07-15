@@ -56,7 +56,11 @@ class ReadJournalQueries(val profile: JdbcProfile, val readJournalConfig: ReadJo
     baseTableWithTagsQuery()
       .filter(_._2.tag === tag)
       .sortBy(_._1.ordering.asc)
-      .filter(row => row._1.ordering > offset && row._1.ordering <= maxOffset)
+      // The following is equivalent to
+      //    .filter(row => row._1.ordering > offset && row._1.ordering <= maxOffset)
+      // but makes the SQL query filter over the columns on the tag table
+      // which is more efficient.
+      .filter(row => row._2.eventId > offset && row._2.eventId <= maxOffset)
       .take(max)
       .map(_._1)
   }
