@@ -30,10 +30,10 @@ jobs:
           git fetch origin pull/${{ github.event.pull_request.number }}/merge:scratch
           git checkout scratch
 
-      - name: Set up JDK adopt@1.11.0-9
+      - name: Set up JDK adopt@1.11.0-11
         uses: olafurpg/setup-scala@v10
         with:
-          java-version: adopt@1.11.0-9
+          java-version: adopt@1.11.0-11
 
       - name: Cache Coursier cache
         uses: coursier/cache-action@v5
